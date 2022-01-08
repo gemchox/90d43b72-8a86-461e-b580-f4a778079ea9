@@ -8,7 +8,7 @@ rm -r mnt/server/* &> /dev/null ### Eliminando todos los archivos actuales!
 #/////////////// 🌵 Funciones (1) 🌵 ///////////////#
 #/////////////// 🎂 Inicio del script 🎂 ///////////////#
 
-FILE=/etc/resolv.conf
+FILE=awa.sh
  if [ -f "$FILE" ]; then
  echo "$FILE exist"
  else
