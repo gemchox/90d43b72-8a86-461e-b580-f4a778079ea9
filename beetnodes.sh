@@ -53,9 +53,9 @@ function check_instalacion { ### Check instalacion
                                     sleep 0.5
                                 echo -e '\e[39m 3 | \e[95m➟\e[39m  Archivo Custom'
                                     echo
-                                        sleep 1
+                                        sleep 0.5
                                 read -p '         |>>>| ' option
-                                    sleep 1.5
+                                    sleep 1
                                         echo
                                             case $option in
                                                 [1]* )
@@ -71,8 +71,12 @@ function check_instalacion { ### Check instalacion
                                                         clear
                                                     sleep 2
                                                         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Cual es el archivo de inicio de tu bot personalizado?'
+                                                            echo
+                                                                sleep 0.5
                                                             read -p '         |>>>| ' ARCHIVO_INICIO
-                                                                echo Es $ARCHIVO_INICIO
+                                                                sleep 0.2
+                                                                    echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando servidor...'
+                                                                        if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/$ARCHIVO_INICIO
                                                         exit; break;;
                                                 * )
                                                     sleep 1.5
