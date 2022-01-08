@@ -34,14 +34,14 @@ sleep 1
 echo -e '\e[92m* \e[39m[\e[92mSTATS\e[39m] PUERTO -> \e[4m\e[95m'${SERVER_PORT}
 fi
 }
-function configuracion { ### Configuracion del servidor
+#function configuracion { ### Configuracion del servidor
 echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] \e[4m\e[95mConfiguracion\e[39m\e[0m'
 echo
 sleep 1.5
 echo -e '\e[92m* \e[39m[\e[92mSTATS\e[39m] PLATAFORMA -> \e[4m\e[95m'${PLATAFORMA}
 sleep 1
 echo -e '\e[92m* \e[39m[\e[92mSTATS\e[39m] BOT -> \e[4m\e[95m'${BOT_SELECCIONADO}
-}
+#}
 #/////////////// 🌵 Funciones (2) 🌵 ///////////////#
 function custom { ### Custom (BOT) (INSTALACION CUSTOM)
 if [-f /home/container/.custom.beetnodes ]; then
@@ -49,4 +49,3 @@ if [-f /home/container/.custom.beetnodes ]; then
     exit
 }
 
-configuracion
