@@ -39,42 +39,47 @@ function check_instalacion { ### Check instalacion
             sleep 1.5
         if [ -f "$FILE_START_MAINJS" ]; then
             if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/main.js
+        elif [ -f "$FILE_START_INDEXJS" ]; then
+            if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
         else
-            echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Cual es el archivo de inicio de tu bot?'
-                    echo
-                        while true; do
-                            echo -e '\e[39m 1 | \e[95m➟\e[39m  Main.js'
-                                sleep 0.5
-                            echo -e '\e[39m 2 | \e[95m➟\e[39m  Index.js'
-                                sleep 0.5
-                            echo -e '\e[39m 3 | \e[95m➟\e[39m  Archivo Custom'
-                                echo
-                                    sleep 1
-                            read -p '         |>>>| ' option
-                                sleep 3
+            sleep 1
+                echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Cual es el archivo de inicio de tu bot?'
+                        echo
+                            while true; do
+                                    sleep 0.5
+                                echo -e '\e[39m 1 | \e[95m➟\e[39m  Main.js'
+                                    sleep 0.5
+                                echo -e '\e[39m 2 | \e[95m➟\e[39m  Index.js'
+                                    sleep 0.5
+                                echo -e '\e[39m 3 | \e[95m➟\e[39m  Archivo Custom'
                                     echo
-                                        case $option in
-                                            [1]* )
-                                                touch .start.mainjs.beetnodes &> /dev/null
-                                                    if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/main.js
+                                        sleep 1
+                                read -p '         |>>>| ' option
+                                    sleep 1.5
+                                        echo
+                                            case $option in
+                                                [1]* )
+                                                    touch .start.mainjs.beetnodes &> /dev/null
+                                                        if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/main.js
+                                                            exit; break;;
+                                                [2]* )
+                                                    touch .start.indexjs.beetnodes &> /dev/null
+                                                        if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
+                                                            exit; break;;
+                                                [3]* )
+                                                    sleep 1.5
+                                                        clear
+                                                    sleep 2
+                                                        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Cual es el archivo de inicio de tu bot personalizado?'
+                                                            read -p '         |>>>| ' ARCHIVO_INICIO
+                                                                echo Es $ARCHIVO_INICIO
                                                         exit; break;;
-                                            [2]* )
-                                                if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
-                                                    exit; break;;
-                                            [3]* )
-                                                sleep 1.5
-                                                    clear
-                                                sleep 2
-                                                    echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Cual es el archivo de inicio de tu bot personalizado?'
-                                                        read ARCHIVO_INICIO
-                                                            echo 'Es $ARCHIVO_INICIO?'
-                                                    exit; break;;
-                                            * )
-                                                sleep 1.5
-                                                    clear
-                                                echo -e '\e[92m* \e[39m[\e[91mERROR\e[39m] Esta no es una opcion valida!'
-                                        esac
-                        done
+                                                * )
+                                                    sleep 1.5
+                                                        clear
+                                                    echo -e '\e[92m* \e[39m[\e[91mERROR\e[39m] Esta no es una opcion valida!'
+                                            esac
+                            done
         fi
     elif [ -f "$FILE_TANJIRO" ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y seleccionado a \e[4m\e[95mTanjiro\e[39m\e[0m!'
