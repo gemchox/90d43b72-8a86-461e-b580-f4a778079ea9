@@ -38,24 +38,26 @@ function check_instalacion { ### Check instalacion
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Cual es el archivo de inicio de tu bot?'
                 echo
                     while true; do
-                        echo -e '\e[39m 1 \e[95m➟\e[39m  Main.js'
+                        echo -e '\e[39m 1 | \e[95m➟\e[39m  Main.js'
                             sleep 0.5
-                        echo -e '\e[39m 2 \e[95m➟\e[39m  Index.js'
+                        echo -e '\e[39m 2 | \e[95m➟\e[39m  Index.js'
                             echo
                                 sleep 1
                         read -p '         |>>>| ' option
-                            case $option in
-                                [1]* )
-                                    echo 'a'
-                                        exit; break;;
-                                [2]* )
-                                    echo 'e'
-                                        exit; break;;
-                                * )
-                                    sleep 1.5
-                                        clear
-                                    echo -e '\e[92m* \e[39m[\e[91mERROR\e[39m] Esta no es una opcion valida!'
-                            esac
+                            sleep 1.5
+                                echo
+                                    case $option in
+                                        [1]* )
+                                            if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/main.js
+                                                exit; break;;
+                                        [2]* )
+                                            if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
+                                                exit; break;;
+                                        * )
+                                            sleep 1.5
+                                                clear
+                                            echo -e '\e[92m* \e[39m[\e[91mERROR\e[39m] Esta no es una opcion valida!'
+                                    esac
                     done
     elif [ -f "$FILE_TANJIRO" ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y seleccionado a \e[4m\e[95mTanjiro\e[39m\e[0m!'
