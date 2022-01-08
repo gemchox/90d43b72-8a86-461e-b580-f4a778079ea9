@@ -35,22 +35,22 @@ function check_instalacion { ### Check instalacion
     if [ -f "$FILE_CUSTOM" ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado una instalacion \e[4m\e[95mCustom\e[39m\e[0m!'
             sleep 1.5
-                while true; do
-                    echo
-                        echo -e 'Awa de OwO'
-                    echo
-                            read -p '         |>>>| ' option
-                                case $option in
-                                    [1]* )
-                                        echo 'a'; break;;
-                                    [2]* )
-                                        echo 'e'; break;;
-                                    * )
-                                        sleep 1.5
-                                            clear
-                                        echo -e '\e[92m* \e[39m[\e[91mERROR\e[39m] Esta no es una opcion valida!'
-                                esac
-                done
+                echo
+        echo -e 'AwA de OwO'
+                echo
+                    while true; do
+                        read -p '         |>>>| ' option
+                            case $option in
+                                [1]* )
+                                    echo 'a'; break;;
+                                [2]* )
+                                    echo 'e'; break;;
+                                * )
+                                    sleep 1.5
+                                        clear
+                                    echo -e '\e[92m* \e[39m[\e[91mERROR\e[39m] Esta no es una opcion valida!'
+                            esac
+                    done
     elif [ -f "$FILE_TANJIRO" ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y seleccionado a \e[4m\e[95mTanjiro\e[39m\e[0m!'
             sleep 3
