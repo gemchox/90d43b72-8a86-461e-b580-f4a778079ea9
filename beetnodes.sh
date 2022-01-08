@@ -16,7 +16,7 @@ function bienvenida { ### Funcion de bienvenida!
             clear
         sleep 1
             echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Bienvenid@ a BeetNodes, encendiendo tu \e[4m\e[95mservidor\e[39m\e[0m!'
-        sleep 0.5
+        sleep 3
             clear
     else
         sleep 0.5
@@ -31,32 +31,53 @@ function bienvenida { ### Funcion de bienvenida!
     fi
 }
 
-function check_custom { ### Check Custom (INSTALACION CUSTOM)
+function check_instalacion { ### Check instalacion
     if [ -f "$FILE_CUSTOM" ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado una instalacion \e[4m\e[95mCustom\e[39m\e[0m!'
-
+            sleep 1.5
+                while true; do
+                    echo
+                        read-p '         |>>>| ' option
+                            case $option in
+                                [1]* )
+                                    echo 'a'; break;;
+                                [2]* )
+                                    echo 'e'; break;;
+                                * )
+                                    sleep 1.5
+                                        clear
+                                    echo -e '\e[92m* \e[39m[\e[91mERROR\e[39m] Esta no es una opcion valida!'
+                            esac
+                done
     elif [ -f "$FILE_TANJIRO" ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y seleccionado a \e[4m\e[95mTanjiro\e[39m\e[0m!'
             sleep 1.5
                     echo
             sleep 0.5
                 clear
-        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando instalacion...'
-            echo
-                if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
+        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando servidor...'
+            sleep 2.5
+                echo
+                    if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
     elif [ -f "$FILE_ALCATRAZ" ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y seleccionado a \e[4m\e[95mAlcatraz\e[39m\e[0m!'
             sleep 1.5
                     echo
             sleep 0.5
                 clear
-        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando instalacion...'
-            echo
-                if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
+        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando servidor...'
+            sleep 2.5
+                echo
+                    if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
+    else
+        sleep 2
+                clear
+            echo -e '\e[92m* \e[39m[\e[91mERROR\e[39m] No se ha podido encontrar el archivo de instalacion, contacta con soporte para recibir ayuda!'
+                exit
     fi
 }
 
 #/////////////// 🎂 Inicio del script 🎂 ///////////////#
 
 bienvenida # Llamando bienvenida!
-check_custom # Llamando check_custom!
+check_instalacion # Llamando check_instalacion!
