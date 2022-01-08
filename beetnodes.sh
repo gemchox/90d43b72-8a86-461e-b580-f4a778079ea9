@@ -38,12 +38,11 @@ function check_instalacion { ### Check instalacion
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Cual es el archivo de inicio de tu bot?'
                 echo
                     while true; do
-                        echo -e '\e[92m*\e[39m Main.js'
+                        echo -e '\e[95m➟\e[39m Main.js'
+                            sleep 0.5
+                        echo -e '\e[95m➟\e[39m Index.js'
                             echo
-                                sleep 1.5
-                        echo -e '\e[92m*\e[39m Index.js'
-                            echo
-                                sleep 1.5
+                                sleep 1
                         read -p '         |>>>| ' option
                             case $option in
                                 [1]* )
