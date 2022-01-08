@@ -49,4 +49,4 @@ if [-f /home/container/.custom.beetnodes ]; then
     exit
 }
 
-echo 'a'
+configuracion
