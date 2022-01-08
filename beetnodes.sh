@@ -37,7 +37,7 @@ function check_instalacion { ### Check instalacion
             sleep 1.5
                 while true; do
                     echo
-                        read-p '         |>>>| ' option
+                        read -p '         |>>>| ' option
                             case $option in
                                 [1]* )
                                     echo 'a'; break;;
@@ -51,9 +51,9 @@ function check_instalacion { ### Check instalacion
                 done
     elif [ -f "$FILE_TANJIRO" ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y seleccionado a \e[4m\e[95mTanjiro\e[39m\e[0m!'
-            sleep 1.5
+            sleep 3
                     echo
-            sleep 0.5
+            sleep 2
                 clear
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando servidor...'
             sleep 2.5
@@ -61,9 +61,9 @@ function check_instalacion { ### Check instalacion
                     if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
     elif [ -f "$FILE_ALCATRAZ" ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y seleccionado a \e[4m\e[95mAlcatraz\e[39m\e[0m!'
-            sleep 1.5
+            sleep 3
                     echo
-            sleep 0.5
+            sleep 2
                 clear
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando servidor...'
             sleep 2.5
