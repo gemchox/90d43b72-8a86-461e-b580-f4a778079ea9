@@ -12,7 +12,14 @@ FILE_ALCATRAZ=.alcatraz.beetnodes
 
 function bienvenida { ### Funcion de bienvenida!
     if [ -f "$FILE_FIRST_START" ]; then
-            sleep 0.5
+        sleep 0.5
+            clear
+        sleep 1
+            echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Bienvenid@ a BeetNodes, encendiendo tu \e[4m\e[95mservidor\e[39m\e[0m!'
+        sleep 0.5
+            clear
+    else
+        sleep 0.5
                 clear
             sleep 1
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Bienvenid@ a BeetNodes, gracias por confiar en \e[4m\e[95mBeetNodes\e[39m\e[0m!'
@@ -21,7 +28,6 @@ function bienvenida { ### Funcion de bienvenida!
             sleep 10
                 clear
             touch .first.beetnodes &> /dev/null
-    else
     fi
 }
 
