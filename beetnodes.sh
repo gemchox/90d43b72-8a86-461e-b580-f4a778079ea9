@@ -55,7 +55,6 @@ function check_instalacion { ### Check instalacion
                                                     clear
                                                         echo -e '\e[92m* \e[39m[\e[91mERROR\e[39m] No se ha podido encontrar el archivo de inicio Main.js, contacta con soporte para recibir ayuda!'
                                                 sleep 0.5
-                                            fi
                                                 exit; break;;
                                         [2]* )
                                             if [ -f "index.js" ]; then
@@ -65,7 +64,6 @@ function check_instalacion { ### Check instalacion
                                                     clear
                                                         echo -e '\e[92m* \e[39m[\e[91mERROR\e[39m] No se ha podido encontrar el archivo de inicio Index.js, contacta con soporte para recibir ayuda!'
                                                 sleep 0.5
-                                            fi
                                                 exit; break;;
                                         * )
                                             sleep 1.5
