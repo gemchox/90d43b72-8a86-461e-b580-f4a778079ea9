@@ -41,6 +41,8 @@ function check_instalacion { ### Check instalacion
                         echo -e '\e[39m 1 | \e[95m➟\e[39m  Main.js'
                             sleep 0.5
                         echo -e '\e[39m 2 | \e[95m➟\e[39m  Index.js'
+                            sleep 0.5
+                        echo -e '\e[39m 1 | \e[95m➟\e[39m  Archivo Custom'
                             echo
                                 sleep 1
                         read -p '         |>>>| ' option
@@ -48,17 +50,18 @@ function check_instalacion { ### Check instalacion
                                 echo
                                     case $option in
                                         [1]* )
-                                            if [ -f "$FILE_FIRST_START" ]; then
-                                                if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/main.js
-                                            elif
-                                                sleep 2
-                                                    clear
-                                                        echo -e '\e[92m* \e[39m[\e[91mERROR\e[39m] No se ha podido encontrar el archivo de inicio Main.js, contacta con soporte para recibir ayuda!'
-                                                sleep 0.5
-                                            fi;
+                                            if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/main.js
                                                 exit; break;;
                                         [2]* )
                                             if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
+                                                exit; break;;
+                                        [3]* )
+                                            sleep 1.5
+                                                clear
+                                            sleep 2
+                                                echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Cual es el archivo de inicio de tu bot personalizado?'
+                                                    read ARCHIVO_INICIO
+                                                        echo 'Es $ARCHIVO_INICIO?'
                                                 exit; break;;
                                         * )
                                             sleep 1.5
