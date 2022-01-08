@@ -35,16 +35,23 @@ function check_instalacion { ### Check instalacion
     if [ -f "$FILE_CUSTOM" ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado una instalacion \e[4m\e[95mCustom\e[39m\e[0m!'
             sleep 1.5
-                echo
-        echo -e 'AwA de OwO'
+        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Cual es el archivo de inicio de tu bot?'
                 echo
                     while true; do
+                        echo -e '\e[92m*\e[39m Main.js'
+                            echo
+                                sleep 1.5
+                        echo -e '\e[92m*\e[39m Index.js'
+                            echo
+                                sleep 1.5
                         read -p '         |>>>| ' option
                             case $option in
                                 [1]* )
-                                    echo 'a'; break;;
+                                    echo 'a'
+                                        exit; break;;
                                 [2]* )
-                                    echo 'e'; break;;
+                                    echo 'e'
+                                        exit; break;;
                                 * )
                                     sleep 1.5
                                         clear
