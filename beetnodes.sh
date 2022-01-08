@@ -48,24 +48,17 @@ function check_instalacion { ### Check instalacion
                                 echo
                                     case $option in
                                         [1]* )
-                                            if [[ -f "main.js" && -f /home/container/package.json ]]; then
-                                                /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/main.js
+                                            if [ -f "$FILE_FIRST_START" ]; then
+                                                if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/main.js
                                             elif
                                                 sleep 2
                                                     clear
                                                         echo -e '\e[92m* \e[39m[\e[91mERROR\e[39m] No se ha podido encontrar el archivo de inicio Main.js, contacta con soporte para recibir ayuda!'
                                                 sleep 0.5
-                                            fi
+                                            fi;
                                                 exit; break;;
                                         [2]* )
-                                            if [ -f "index.js" ]; then
-                                                if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
-                                            elif
-                                                sleep 2
-                                                    clear
-                                                        echo -e '\e[92m* \e[39m[\e[91mERROR\e[39m] No se ha podido encontrar el archivo de inicio Index.js, contacta con soporte para recibir ayuda!'
-                                                sleep 0.5
-                                            fi
+                                            if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
                                                 exit; break;;
                                         * )
                                             sleep 1.5
