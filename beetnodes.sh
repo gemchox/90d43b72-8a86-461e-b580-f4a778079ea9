@@ -7,6 +7,8 @@ FILE_FIRST_START=.first.beetnodes
 FILE_CUSTOM=.custom.beetnodes
 FILE_TANJIRO=.tanjiro.beetnodes
 FILE_ALCATRAZ=.alcatraz.beetnodes
+FILE_DOGEBOT=.dogebot.beetnodes
+FILE_DOGEBOT_V2=.dogebot.v2.beetnodes
 FILE_START_MAINJS=.start.mainjs.beetnodes
 FILE_START_INDEXJS=.start.indexjs.beetnodes
 
@@ -105,11 +107,32 @@ function check_instalacion { ### Check instalacion
             sleep 2.5
                 echo
                     if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
+    elif [ -f "$FILE_DOGEBOT" ]; then
+        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y seleccionado a \e[4m\e[95mDogeBot\e[39m\e[0m!'
+            sleep 3
+                    echo
+            sleep 2
+                clear
+        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando servidor...'
+            sleep 2.5
+                echo
+                    if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/main.js
+    elif [ -f "$FILE_DOGEBOT_V2" ]; then
+        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y seleccionado a \e[4m\e[95mDogeBot-V2\e[39m\e[0m!'
+            sleep 3
+                    echo
+            sleep 2
+                clear
+        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando servidor...'
+            sleep 2.5
+                echo
+                    if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
     else
         sleep 2
                 clear
-            echo -e '\e[92m* \e[39m[\e[91mERROR\e[39m] No se ha podido encontrar el archivo de instalacion, contacta con soporte para recibir ayuda!'
-                exit
+            echo -e '\e[92m* \e[39m[\e[91mERROR\e[39m] No se ha podido encontrar el archivo de instalacion, contacta con soporte para recibir ayuda, o reinstala tu servidor!'
+                sleep 5
+                    exit
     fi
 }
 
