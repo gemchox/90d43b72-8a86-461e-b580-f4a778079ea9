@@ -9,6 +9,7 @@ FILE_TANJIRO=.tanjiro.beetnodes
 FILE_ALCATRAZ=.alcatraz.beetnodes
 FILE_DOGEBOT=.dogebot.beetnodes
 FILE_FX_BOT_V83=.fxbot.v83.beetnodes
+FILE_FX_BOT_V83_2=.fxbot.v83-2.beetnodes
 FILE_START_MAINJS=.start.mainjs.beetnodes
 FILE_START_INDEXJS=.start.indexjs.beetnodes
 
@@ -119,6 +120,16 @@ function check_instalacion { ### Check instalacion
                     if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/main.js
     elif [ -f "$FILE_FX_BOT_V83" ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mFx-Bot-V83\e[39m\e[0m!'
+            sleep 3
+                    echo
+            sleep 2
+                clear
+        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando servidor...'
+            sleep 2.5
+                echo
+                    if [ -f /home/container/package.json ]; then /usr/local/bin/node /home/container/index.js; fi
+    elif [ -f "$FILE_FX_BOT_V83_2" ]; then
+        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mFx-Bot-V83.2\e[39m\e[0m!'
             sleep 3
                     echo
             sleep 2
