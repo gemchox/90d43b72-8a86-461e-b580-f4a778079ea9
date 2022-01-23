@@ -8,13 +8,41 @@ FILE_CUSTOM=.custom.beetnodes
 FILE_TANJIRO=.tanjiro.beetnodes
 FILE_ALCATRAZ=.alcatraz.beetnodes
 FILE_DOGEBOT=.dogebot.beetnodes
-FILE_FX_BOT_V83=.fxbot.v83.beetnodes
-FILE_FX_BOT_V83_2=.fxbot.v83-2.beetnodes
 FILE_NK_BOT=.nkbot.beetnodes
 FILE_START_MAINJS=.start.mainjs.beetnodes
 FILE_START_INDEXJS=.start.indexjs.beetnodes
 
 #/////////////// 🌵 Funciones (1) 🌵 ///////////////#
+
+function stats { ### Stats del servidor
+    if [ ${SERVER_MEMORY} != 0 ]; then
+        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] \e[4m\e[95mStats\e[39m\e[0m'
+        echo
+        sleep 1.5
+        echo -e '\e[92m* \e[39m[\e[92mSTATS\e[39m] RAM -> \e[4m\e[95m'${SERVER_MEMORY}
+        sleep 1
+        echo -e '\e[92m* \e[39m[\e[92mSTATS\e[39m] CLUSTER -> \e[4m\e[95m'${P_SERVER_LOCATION}
+        sleep 1
+        echo -e '\e[92m* \e[39m[\e[92mSTATS\e[39m] ID -> \e[4m\e[95m'${P_SERVER_UUID}
+        sleep 1
+        echo -e '\e[92m* \e[39m[\e[92mSTATS\e[39m] IP LOCAL -> \e[4m\e[95m'${SERVER_IP}
+        sleep 1
+        echo -e '\e[92m* \e[39m[\e[92mSTATS\e[39m] PUERTO -> \e[4m\e[95m'${SERVER_PORT}
+    else
+        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] \e[4m\e[95mStats\e[39m\e[0m'
+        echo
+        sleep 1.5
+        echo -e '\e[92m* \e[39m[\e[92mSTATS\e[39m] RAM -> \e[4m\e[95mILIMITADA'
+        sleep 1
+        echo -e '\e[92m* \e[39m[\e[92mSTATS\e[39m] CLUSTER -> \e[4m\e[95m'${P_SERVER_LOCATION}
+        sleep 1
+        echo -e '\e[92m* \e[39m[\e[92mSTATS\e[39m] ID -> \e[4m\e[95m'${P_SERVER_UUID}
+        sleep 1
+        echo -e '\e[92m* \e[39m[\e[92mSTATS\e[39m] IP LOCAL -> \e[4m\e[95m'${SERVER_IP}
+        sleep 1
+        echo -e '\e[92m* \e[39m[\e[92mSTATS\e[39m] PUERTO -> \e[4m\e[95m'${SERVER_PORT}
+    fi
+}
 
 function bienvenida { ### Funcion de bienvenida!
     if [ -f "$FILE_FIRST_START" ]; then
@@ -31,7 +59,11 @@ function bienvenida { ### Funcion de bienvenida!
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Bienvenid@ a BeetNodes, gracias por confiar en \e[4m\e[95mBeetNodes\e[39m\e[0m!'
             sleep 3
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] En \e[4m\e[95mBeetNodes\e[39m\e[0m estamos muy felices de verte aqui, y esperamos que disfrutes de los servicios que ofrecemos, de alta calidad, por un muy bajo costo!'
-            sleep 10
+            sleep 1.5
+                clear
+            sleep 1.5
+                stats
+            sleep 8
                 clear
             touch .first.beetnodes &> /dev/null
     fi
@@ -73,14 +105,15 @@ function check_instalacion { ### Check instalacion
                                                 [3]* )
                                                     sleep 1.5
                                                         clear
-                                                    sleep 2
+                                                    sleep 1
                                                         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Cual es el archivo de inicio de tu bot personalizado?'
                                                             echo
                                                                 sleep 0.5
                                                             read -p '         |>>>| ' ARCHIVO_INICIO
                                                                 sleep 0.2
                                                                     echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando servidor...'
-                                                                        if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/$ARCHIVO_INICIO
+                                                                        echo
+                                                                            if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/$ARCHIVO_INICIO
                                                         exit; break;;
                                                 * )
                                                     sleep 1.5
@@ -119,26 +152,6 @@ function check_instalacion { ### Check instalacion
             sleep 2.5
                 echo
                     if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/main.js
-    elif [ -f "$FILE_FX_BOT_V83" ]; then
-        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mFx-Bot-V83\e[39m\e[0m!'
-            sleep 3
-                    echo
-            sleep 2
-                clear
-        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando servidor...'
-            sleep 2.5
-                echo
-                    if [ -f /home/container/package.json ]; then /usr/local/bin/node /home/container/index.js; fi
-    elif [ -f "$FILE_FX_BOT_V83_2" ]; then
-        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mFx-Bot-V83.2\e[39m\e[0m!'
-            sleep 3
-                    echo
-            sleep 2
-                clear
-        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando servidor...'
-            sleep 2.5
-                echo
-                    if [ -f /home/container/package.json ]; then /usr/local/bin/node /home/container/index.js; fi
     elif [ -f "$FILE_NK_BOT" ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mNk-Bot\e[39m\e[0m!'
             sleep 3
