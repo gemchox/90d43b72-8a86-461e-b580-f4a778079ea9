@@ -9,6 +9,7 @@ FILE_TANJIRO=.tanjiro.beetnodes
 FILE_ALCATRAZ=.alcatraz.beetnodes
 FILE_DOGEBOT=.dogebot.beetnodes
 FILE_NK_BOT=.nkbot.beetnodes
+FILE_SHADOW_BOT_V3=.shadowbot.v3.beetnodes
 FILE_START_MAINJS=.start.mainjs.beetnodes
 FILE_START_INDEXJS=.start.indexjs.beetnodes
 
@@ -59,7 +60,7 @@ function bienvenida { ### Funcion de bienvenida!
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Bienvenid@ a BeetNodes, gracias por confiar en \e[4m\e[95mBeetNodes\e[39m\e[0m!'
             sleep 3
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] En \e[4m\e[95mBeetNodes\e[39m\e[0m estamos muy felices de verte aqui, y esperamos que disfrutes de los servicios que ofrecemos, de alta calidad, por un muy bajo costo!'
-            sleep 1.5
+            sleep 8
                 clear
             sleep 1.5
                 stats
@@ -162,6 +163,16 @@ function check_instalacion { ### Check instalacion
             sleep 2.5
                 echo
                     if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/nkbot.js
+    elif [ -f "$FILE_SHADOW_BOT_V3" ]; then
+        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mShadowBotV3\e[39m\e[0m!'
+            sleep 3
+                    echo
+            sleep 2
+                clear
+        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando servidor...'
+            sleep 2.5
+                echo
+                    if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
     else
         sleep 2
                 clear
