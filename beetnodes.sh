@@ -205,10 +205,11 @@ function check_instalacion { ### Check instalacion
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando servidor...'
             sleep 2.5
                 echo
-                    /usr/local/bin/npm node-tesseract-ocr;
-                    /usr/local/bin/npm @adiwajshing/baileys;
-                    /usr/local/bin/npm ffmpeg;
-                    /usr/local/bin/npm cfonts;
+                    /usr/local/bin/npm install node-tesseract-ocr;
+                    /usr/local/bin/npm install @adiwajshing/baileys;
+                    /usr/local/bin/npm install ffmpeg;
+                    /usr/local/bin/npm install cfonts;
+                    /usr/local/bin/npm update;
                         if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/samu.js
     else
         sleep 2
