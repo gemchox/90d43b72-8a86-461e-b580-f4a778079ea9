@@ -194,7 +194,7 @@ function check_instalacion { ### Check instalacion
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando servidor...'
             sleep 2.5
                 echo
-                    if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
+                    if [ -f /home/container/package.json ]; then /usr/local/bin/node /home/container/index.js; fi;
     else
         sleep 2
                 clear
