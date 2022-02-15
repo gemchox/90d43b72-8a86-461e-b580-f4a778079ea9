@@ -249,6 +249,7 @@ function check_instalacion { ### Check instalacion
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando servidor...'
             sleep 2.5
                 echo
+                    /usr/local/bin/npm install yt-search;
                         if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/thechoute.js
     else
         sleep 2
