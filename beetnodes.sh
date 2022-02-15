@@ -12,7 +12,7 @@ FILE_NK_BOT=.nkbot.beetnodes
 FILE_SHADOW_BOT_V3=.shadowbot.v3.beetnodes
 FILE_FXBOT_V83_2=.fxbot.v83-2.beetnodes
 FILE_DYLUX_BOT=.dyluxbot.beetnodes
-FILE_TERMUX_WABOT=.termux.wabot.beetnodes
+FILE_WABOT_AQ=.wabot.aq.beetnodes
 FILE_WHATSAPP_BOT=.whatsapp.bot.beetnodes
 FILE_CUSTOM=.custom.beetnodes
 FILE_START_MAINJS=.start.mainjs.beetnodes
@@ -208,8 +208,8 @@ function check_instalacion { ### Check instalacion
             sleep 2.5
                 echo
                         if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/main.js
-    elif [ -f "$FILE_TERMUX_WABOT" ]; then
-        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mTermux-WaBot\e[39m\e[0m!'
+    elif [ -f "$FILE_WABOT_AQ" ]; then
+        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mWaBot-AQ\e[39m\e[0m!'
             sleep 3
                     echo
             sleep 2
