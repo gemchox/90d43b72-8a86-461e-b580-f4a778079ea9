@@ -250,6 +250,17 @@ function check_instalacion { ### Check instalacion
             sleep 2.5
                 echo
                     /usr/local/bin/npm install yt-search;
+                    /usr/local/bin/npm install toml;
+                    /usr/local/bin/npm install crypto-js;
+                    /usr/local/bin/npm install moment-timezone;
+                    /usr/local/bin/npm install axios;
+                    /usr/local/bin/npm install node-fetch@2.6.1 - npm;
+                    /usr/local/bin/npm install requests;
+                    /usr/local/bin/npm install cfonts;
+                    /usr/local/bin/npm install spinnies;
+                    /usr/local/bin/npm install image-to-base64;
+                    /usr/local/bin/npm install remove.bg;
+                    /usr/local/bin/npm install fluent-ffmpeg;
                         if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/thechoute.js
     else
         sleep 2
