@@ -262,6 +262,7 @@ function check_instalacion { ### Check instalacion
                     /usr/local/bin/npm install remove.bg;
                     /usr/local/bin/npm install fluent-ffmpeg;
                     /usr/local/bin/npm install google-it;
+                    /usr/local/bin/npm install g-i-s;
                         if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/thechoute.js
     else
         sleep 2
