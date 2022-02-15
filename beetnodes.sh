@@ -16,6 +16,7 @@ FILE_WABOT_AQ=.wabot.aq.beetnodes
 FILE_GAMES_WABOT=.games.wabot.beetnodes
 FILE_TERMUX_WABOT_ECONOMY=.termux.wabot.economy.beetnodes
 FILE_BABY_BECHOSO_BOT=.baby.bechoso.beetnodes
+FILE_BABY_OFICIAL_BOT=.baby.ofc.beetnodes
 FILE_CUSTOM=.custom.beetnodes
 FILE_START_MAINJS=.start.mainjs.beetnodes
 FILE_START_INDEXJS=.start.indexjs.beetnodes
@@ -252,6 +253,16 @@ function check_instalacion { ### Check instalacion
                     /usr/local/bin/npm install yt-search;
                     /usr/local/bin/npm install google-it;
                     /usr/local/bin/npm install g-i-s;
+                        if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/thechoute.js
+    elif [ -f "$FILE_BABY_OFICIAL_BOT" ]; then
+        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mBaby-OFC\e[39m\e[0m!'
+            sleep 3
+                    echo
+            sleep 2
+                clear
+        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando servidor...'
+            sleep 2.5
+                echo
                         if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/thechoute.js
     else
         sleep 2
