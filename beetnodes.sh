@@ -23,6 +23,7 @@ FILE_BOTZAZA=.botzaza.beetnodes
 FILE_CUSTOM=.custom.beetnodes
 FILE_START_MAINJS=.start.mainjs.beetnodes
 FILE_START_INDEXJS=.start.indexjs.beetnodes
+FILE_START_AUTO=.start.auto.beetnodes
 
 #/////////////// 🌵 Funciones (1) 🌵 ///////////////#
 
@@ -86,8 +87,10 @@ function check_instalacion { ### Check instalacion
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado una instalacion \e[4m\e[95mCustom\e[39m\e[0m!'
             sleep 1.5
         if [ -f "$FILE_START_MAINJS" ]; then
-            if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
+            if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/main.js
         elif [ -f "$FILE_START_INDEXJS" ]; then
+            if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
+        elif [ -f "$FILE_START_AUTO" ]; then
             if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
         else
             sleep 1
@@ -99,7 +102,9 @@ function check_instalacion { ### Check instalacion
                                     sleep 0.5
                                 echo -e '\e[39m 2 | \e[95m➟\e[39m  Index.js'
                                     sleep 0.5
-                                echo -e '\e[39m 3 | \e[95m➟\e[39m  Archivo Custom'
+                                echo -e '\e[39m 3 | \e[95m➟\e[39m  Automatico (npm start)'
+                                    sleep 0.5
+                                echo -e '\e[39m 4 | \e[95m➟\e[39m  Archivo Custom'
                                     echo
                                         sleep 0.5
                                 read -p '         |>>>| ' option
@@ -108,13 +113,17 @@ function check_instalacion { ### Check instalacion
                                             case $option in
                                                 [1]* )
                                                     touch .start.mainjs.beetnodes &> /dev/null
-                                                        if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
+                                                        if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/main.js
                                                             exit; break;;
                                                 [2]* )
                                                     touch .start.indexjs.beetnodes &> /dev/null
-                                                        if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
+                                                        if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
                                                             exit; break;;
                                                 [3]* )
+                                                    touch .start.auto.beetnodes &> /dev/null
+                                                        if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
+                                                            exit; break;;
+                                                [4]* )
                                                     sleep 1.5
                                                         clear
                                                     sleep 1
