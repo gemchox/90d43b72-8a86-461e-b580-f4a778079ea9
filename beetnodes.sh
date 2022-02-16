@@ -1,6 +1,6 @@
 #!/bin/bash
 # Este es el script de inicio de BeetNodes! Made by HiroBeet! 🦑
-rm -r mnt/server/* &> /dev/null ### Eliminando todos los archivos actuales!
+# rm -r mnt/server/* &> /dev/null ### Eliminando todos los archivos actuales!
 #/////////////// 🚩 Variables 🚩 ///////////////#
 
 FILE_FIRST_START=.first.beetnodes
@@ -20,6 +20,8 @@ FILE_BABY_BECHOSO_BOT=.baby.bechoso.beetnodes
 FILE_FGBOT_BOT_V4=.fbbot.v4.beetnodes
 FILE_TURBO_BOT_V3=.turbo.v3.beetnodes
 FILE_BOTZAZA=.botzaza.beetnodes
+FILE_BADBOY=.badboy.beetnodes
+FILE_SHINIGAMI=.shinigami.beetnodes
 FILE_CUSTOM=.custom.beetnodes
 FILE_START_MAINJS=.start.mainjs.beetnodes
 FILE_START_INDEXJS=.start.indexjs.beetnodes
@@ -298,6 +300,26 @@ function check_instalacion { ### Check instalacion
                         if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
     elif [ -f "$FILE_BOTZAZA" ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mBotzaza\e[39m\e[0m!'
+            sleep 3
+                    echo
+            sleep 2
+                clear
+        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando servidor...'
+            sleep 2.5
+                echo
+                        if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
+    elif [ -f "$FILE_BADBOY" ]; then
+        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mBadBoy\e[39m\e[0m!'
+            sleep 3
+                    echo
+            sleep 2
+                clear
+        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando servidor...'
+            sleep 2.5
+                echo
+                        if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
+    elif [ -f "$FILE_SHINIGAMI" ]; then
+        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mShinigami\e[39m\e[0m!'
             sleep 3
                     echo
             sleep 2
