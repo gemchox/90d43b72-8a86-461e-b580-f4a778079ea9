@@ -61,7 +61,7 @@ function stats { ### Stats del servidor
 }
 
 function bienvenida { ### Funcion de bienvenida!
-    if [ -f "$FILE_FIRST_START" ]; then
+    if [ -f '$FILE_FIRST_START' ]; then
         sleep 0.5
             clear
         sleep 1
@@ -86,67 +86,75 @@ function bienvenida { ### Funcion de bienvenida!
 }
 
 function check_instalacion { ### Check instalacion
-    if [ -f "$FILE_CUSTOM" ]; then
+    if [ -f '$FILE_CUSTOM' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado una instalacion \e[4m\e[95mCustom\e[39m\e[0m!'
             sleep 1.5
-        if [ -f "$FILE_START_MAINJS" ]; then
-            if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/main.js
-        elif [ -f "$FILE_START_INDEXJS" ]; then
-            if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
-        elif [ -f "$FILE_START_AUTO" ]; then
-            if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
+        if [ ${EXTRA_PACKAGES} != '' ]; then
+            /usr/local/bin/npm install ${EXTRA_PACKAGES} # Instala los paquetes extra
+                sleep 1.5
+                    echo 'AWA'
         else
-            sleep 1
-                echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Cual es el archivo de inicio de tu bot?'
-                        echo
-                            while true; do
-                                    sleep 0.5
-                                echo -e '\e[39m 1 | \e[95m➟\e[39m  Main.js'
-                                    sleep 0.5
-                                echo -e '\e[39m 2 | \e[95m➟\e[39m  Index.js'
-                                    sleep 0.5
-                                echo -e '\e[39m 3 | \e[95m➟\e[39m  Automatico (npm start)'
-                                    sleep 0.5
-                                echo -e '\e[39m 4 | \e[95m➟\e[39m  Archivo Custom'
-                                    echo
-                                        sleep 0.5
-                                read -p '         |>>>| ' option
-                                    sleep 1
-                                        echo
-                                            case $option in
-                                                [1]* )
-                                                    touch .start.mainjs.beetnodes &> /dev/null
-                                                        if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/main.js
-                                                            exit; break;;
-                                                [2]* )
-                                                    touch .start.indexjs.beetnodes &> /dev/null
-                                                        if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
-                                                            exit; break;;
-                                                [3]* )
-                                                    touch .start.auto.beetnodes &> /dev/null
-                                                        if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
-                                                            exit; break;;
-                                                [4]* )
-                                                    sleep 1.5
-                                                        clear
-                                                    sleep 1
-                                                        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Cual es el archivo de inicio de tu bot personalizado?'
-                                                            echo
-                                                                sleep 0.5
-                                                            read -p '         |>>>| ' ARCHIVO_INICIO
-                                                                sleep 0.2
-                                                                    echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando servidor...'
-                                                                        echo
-                                                                            if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/$ARCHIVO_INICIO
-                                                        exit; break;;
-                                                * )
-                                                    sleep 1.5
-                                                        clear
-                                                    echo -e '\e[92m* \e[39m[\e[91mERROR\e[39m] Esta no es una opcion valida!'
-                                            esac
-                            done
+            sleep 1.5
+                echo 'OWO'
         fi
-    elif [ -f "$FILE_TANJIRO" ]; then
+            if [ -f '$FILE_START_MAINJS' ]; then
+                if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/main.js
+            elif [ -f '$FILE_START_INDEXJS' ]; then
+                if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
+            elif [ -f '$FILE_START_AUTO' ]; then
+                if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
+            else
+                sleep 1
+                    echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Cual es el archivo de inicio de tu bot?'
+                            echo
+                                while true; do
+                                        sleep 0.5
+                                    echo -e '\e[39m 1 | \e[95m➟\e[39m  Main.js'
+                                        sleep 0.5
+                                    echo -e '\e[39m 2 | \e[95m➟\e[39m  Index.js'
+                                        sleep 0.5
+                                    echo -e '\e[39m 3 | \e[95m➟\e[39m  Automatico (npm start)'
+                                        sleep 0.5
+                                    echo -e '\e[39m 4 | \e[95m➟\e[39m  Archivo Custom'
+                                        echo
+                                            sleep 0.5
+                                    read -p '         |>>>| ' option
+                                        sleep 1
+                                            echo
+                                                case $option in
+                                                    [1]* )
+                                                        touch .start.mainjs.beetnodes &> /dev/null
+                                                            if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/main.js
+                                                                exit; break;;
+                                                    [2]* )
+                                                        touch .start.indexjs.beetnodes &> /dev/null
+                                                            if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
+                                                                exit; break;;
+                                                    [3]* )
+                                                        touch .start.auto.beetnodes &> /dev/null
+                                                            if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
+                                                                exit; break;;
+                                                    [4]* )
+                                                        sleep 1.5
+                                                            clear
+                                                        sleep 1
+                                                            echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Cual es el archivo de inicio de tu bot personalizado?'
+                                                                echo
+                                                                    sleep 0.5
+                                                                read -p '         |>>>| ' ARCHIVO_INICIO
+                                                                    sleep 0.2
+                                                                        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando servidor...'
+                                                                            echo
+                                                                                if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/$ARCHIVO_INICIO
+                                                            exit; break;;
+                                                    * )
+                                                        sleep 1.5
+                                                            clear
+                                                        echo -e '\e[92m* \e[39m[\e[91mERROR\e[39m] Esta no es una opcion valida!'
+                                                esac
+                                done
+            fi
+    elif [ -f '$FILE_TANJIRO' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mTanjiro\e[39m\e[0m!'
             sleep 3
                     echo
@@ -156,7 +164,7 @@ function check_instalacion { ### Check instalacion
             sleep 2.5
                 echo
                     if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
-    elif [ -f "$FILE_ALCATRAZ" ]; then
+    elif [ -f '$FILE_ALCATRAZ' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mAlcatraz\e[39m\e[0m!'
             sleep 3
                     echo
@@ -166,7 +174,7 @@ function check_instalacion { ### Check instalacion
             sleep 2.5
                 echo
                     if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
-    elif [ -f "$FILE_ALCATRAZ_V2" ]; then
+    elif [ -f '$FILE_ALCATRAZ_V2' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mAlcatrazV2\e[39m\e[0m!'
             sleep 3
                     echo
@@ -176,7 +184,7 @@ function check_instalacion { ### Check instalacion
             sleep 2.5
                 echo
                     if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
-    elif [ -f "$FILE_ASTERIA" ]; then
+    elif [ -f '$FILE_ASTERIA' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mAsteria\e[39m\e[0m!'
             sleep 3
                     echo
@@ -186,7 +194,7 @@ function check_instalacion { ### Check instalacion
             sleep 2.5
                 echo
                     if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
-    elif [ -f "$FILE_DOGEBOT" ]; then
+    elif [ -f '$FILE_DOGEBOT' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mDogeBot\e[39m\e[0m!'
             sleep 3
                     echo
@@ -196,7 +204,7 @@ function check_instalacion { ### Check instalacion
             sleep 2.5
                 echo
                     if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
-    elif [ -f "$FILE_NK_BOT" ]; then
+    elif [ -f '$FILE_NK_BOT' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mNk-Bot\e[39m\e[0m!'
             sleep 3
                     echo
@@ -206,7 +214,7 @@ function check_instalacion { ### Check instalacion
             sleep 2.5
                 echo
                     if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
-    elif [ -f "$FILE_SHADOW_BOT_V3" ]; then
+    elif [ -f '$FILE_SHADOW_BOT_V3' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mShadowBotV3\e[39m\e[0m!'
             sleep 3
                     echo
@@ -216,7 +224,7 @@ function check_instalacion { ### Check instalacion
             sleep 2.5
                 echo
                     if [ -f /home/container/package.json ]; then /usr/local/bin/npm start; fi;
-    elif [ -f "$FILE_FXBOT_V83_2" ]; then
+    elif [ -f '$FILE_FXBOT_V83_2' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mFxBotV83.2\e[39m\e[0m!'
             sleep 3
                     echo
@@ -226,7 +234,7 @@ function check_instalacion { ### Check instalacion
             sleep 2.5
                 echo
                     if [ -f /home/container/package.json ]; then /usr/local/bin/npm start; fi;
-    elif [ -f "$FILE_DYLUX_BOT" ]; then
+    elif [ -f '$FILE_DYLUX_BOT' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mDylux-Bot\e[39m\e[0m!'
             sleep 3
                     echo
@@ -236,7 +244,7 @@ function check_instalacion { ### Check instalacion
             sleep 2.5
                 echo
                         if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
-    elif [ -f "$FILE_WABOT_AQ" ]; then
+    elif [ -f '$FILE_WABOT_AQ' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mWaBot-AQ\e[39m\e[0m!'
             sleep 3
                     echo
@@ -246,7 +254,7 @@ function check_instalacion { ### Check instalacion
             sleep 2.5
                 echo
                         if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
-    elif [ -f "$FILE_GAMES_WABOT" ]; then
+    elif [ -f '$FILE_GAMES_WABOT' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mGames-WaBot\e[39m\e[0m!'
             sleep 3
                     echo
@@ -256,7 +264,7 @@ function check_instalacion { ### Check instalacion
             sleep 2.5
                 echo
                         if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
-    elif [ -f "$FILE_TERMUX_WABOT_ECONOMY" ]; then
+    elif [ -f '$FILE_TERMUX_WABOT_ECONOMY' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mTermux-WaBot-Economy\e[39m\e[0m!'
             sleep 3
                     echo
@@ -266,7 +274,7 @@ function check_instalacion { ### Check instalacion
             sleep 2.5
                 echo
                         if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
-    elif [ -f "$FILE_BABY_BECHOSO_BOT" ]; then
+    elif [ -f '$FILE_BABY_BECHOSO_BOT' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mBabyBechoso\e[39m\e[0m!'
             sleep 3
                     echo
@@ -279,7 +287,7 @@ function check_instalacion { ### Check instalacion
                     /usr/local/bin/npm install google-it;
                     /usr/local/bin/npm install g-i-s;
                         if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
-    elif [ -f "$FILE_FGBOT_BOT_V4" ]; then
+    elif [ -f '$FILE_FGBOT_BOT_V4' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mFgBotV4\e[39m\e[0m!'
             sleep 3
                     echo
@@ -289,7 +297,7 @@ function check_instalacion { ### Check instalacion
             sleep 2.5
                 echo
                         if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
-    elif [ -f "$FILE_TURBO_BOT_V3" ]; then
+    elif [ -f '$FILE_TURBO_BOT_V3' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mTurboBot-V3\e[39m\e[0m!'
             sleep 3
                     echo
@@ -299,7 +307,7 @@ function check_instalacion { ### Check instalacion
             sleep 2.5
                 echo
                         if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
-    elif [ -f "$FILE_BOTZAZA" ]; then
+    elif [ -f '$FILE_BOTZAZA' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mBotzaza\e[39m\e[0m!'
             sleep 3
                     echo
@@ -309,7 +317,7 @@ function check_instalacion { ### Check instalacion
             sleep 2.5
                 echo
                         if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
-    elif [ -f "$FILE_BADBOY" ]; then
+    elif [ -f '$FILE_BADBOY' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mBadBoy\e[39m\e[0m!'
             sleep 3
                     echo
@@ -319,7 +327,7 @@ function check_instalacion { ### Check instalacion
             sleep 2.5
                 echo
                         if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
-    elif [ -f "$FILE_SHINIGAMI" ]; then
+    elif [ -f '$FILE_SHINIGAMI' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mShinigami\e[39m\e[0m!'
             sleep 3
                     echo
@@ -329,7 +337,7 @@ function check_instalacion { ### Check instalacion
             sleep 2.5
                 echo
                         if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
-    elif [ -f "$FILE_TZY" ]; then
+    elif [ -f '$FILE_TZY' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mTzy\e[39m\e[0m!'
             sleep 3
                     echo
