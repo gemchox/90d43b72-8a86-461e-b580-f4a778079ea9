@@ -89,7 +89,7 @@ function check_instalacion { ### Check instalacion
     if [ -f '$FILE_CUSTOM' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado una instalacion \e[4m\e[95mCustom\e[39m\e[0m!'
             sleep 1.5
-        if [ ${EXTRA_PACKAGES} != '' ]; then
+        if [ ${EXTRA_PACKAGES} != 'axios' ]; then
             /usr/local/bin/npm install ${EXTRA_PACKAGES} # Instala los paquetes extra
                 sleep 1.5
                     echo 'AWA'
