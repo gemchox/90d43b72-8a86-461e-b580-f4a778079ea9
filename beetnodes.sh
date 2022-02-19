@@ -89,71 +89,73 @@ function check_instalacion { ### Check instalacion
     if [ -f '$FILE_CUSTOM' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado una instalacion \e[4m\e[95mCustom\e[39m\e[0m!'
             sleep 1.5
-        if [ ${EXTRA_PACKAGES} != 'axios' ]; then
-            /usr/local/bin/npm install ${EXTRA_PACKAGES} # Instala los paquetes extra
-                sleep 1.5
-                    echo 'AWA'
-        else
-            sleep 1.5
-                echo 'OWO'
-        fi
-            if [ -f '$FILE_START_MAINJS' ]; then
-                if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/main.js
-            elif [ -f '$FILE_START_INDEXJS' ]; then
-                if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
-            elif [ -f '$FILE_START_AUTO' ]; then
-                if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
-            else
-                sleep 1
-                    echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Cual es el archivo de inicio de tu bot?'
-                            echo
-                                while true; do
-                                        sleep 0.5
-                                    echo -e '\e[39m 1 | \e[95m➟\e[39m  Main.js'
-                                        sleep 0.5
-                                    echo -e '\e[39m 2 | \e[95m➟\e[39m  Index.js'
-                                        sleep 0.5
-                                    echo -e '\e[39m 3 | \e[95m➟\e[39m  Automatico (npm start)'
-                                        sleep 0.5
-                                    echo -e '\e[39m 4 | \e[95m➟\e[39m  Archivo Custom'
-                                        echo
+                if [ ${EXTRA_PACKAGES} != 'axios' ]; then
+                    /usr/local/bin/npm install ${EXTRA_PACKAGES} # Instala los paquetes extra
+                        sleep 1.5
+                            echo 'AWA'
+                else
+                        sleep 1.5
+                            echo 'OWO'
+                fi
+        """
+                if [ -f '$FILE_START_MAINJS' ]; then
+                    if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/main.js
+                elif [ -f '$FILE_START_INDEXJS' ]; then
+                    if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
+                elif [ -f '$FILE_START_AUTO' ]; then
+                    if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
+                else
+                    sleep 1
+                        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Cual es el archivo de inicio de tu bot?'
+                                echo
+                                    while true; do
                                             sleep 0.5
-                                    read -p '         |>>>| ' option
-                                        sleep 1
+                                        echo -e '\e[39m 1 | \e[95m➟\e[39m  Main.js'
+                                            sleep 0.5
+                                        echo -e '\e[39m 2 | \e[95m➟\e[39m  Index.js'
+                                            sleep 0.5
+                                        echo -e '\e[39m 3 | \e[95m➟\e[39m  Automatico (npm start)'
+                                            sleep 0.5
+                                        echo -e '\e[39m 4 | \e[95m➟\e[39m  Archivo Custom'
                                             echo
-                                                case $option in
-                                                    [1]* )
-                                                        touch .start.mainjs.beetnodes &> /dev/null
-                                                            if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/main.js
+                                                sleep 0.5
+                                        read -p '         |>>>| ' option
+                                            sleep 1
+                                                echo
+                                                    case $option in
+                                                        [1]* )
+                                                            touch .start.mainjs.beetnodes &> /dev/null
+                                                                if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/main.js
+                                                                    exit; break;;
+                                                        [2]* )
+                                                            touch .start.indexjs.beetnodes &> /dev/null
+                                                                if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
+                                                                    exit; break;;
+                                                        [3]* )
+                                                            touch .start.auto.beetnodes &> /dev/null
+                                                                if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
+                                                                    exit; break;;
+                                                        [4]* )
+                                                            sleep 1.5
+                                                                clear
+                                                            sleep 1
+                                                                echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Cual es el archivo de inicio de tu bot personalizado?'
+                                                                    echo
+                                                                        sleep 0.5
+                                                                    read -p '         |>>>| ' ARCHIVO_INICIO
+                                                                        sleep 0.2
+                                                                            echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando servidor...'
+                                                                                echo
+                                                                                    if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/$ARCHIVO_INICIO
                                                                 exit; break;;
-                                                    [2]* )
-                                                        touch .start.indexjs.beetnodes &> /dev/null
-                                                            if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/index.js
-                                                                exit; break;;
-                                                    [3]* )
-                                                        touch .start.auto.beetnodes &> /dev/null
-                                                            if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/npm start
-                                                                exit; break;;
-                                                    [4]* )
-                                                        sleep 1.5
-                                                            clear
-                                                        sleep 1
-                                                            echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Cual es el archivo de inicio de tu bot personalizado?'
-                                                                echo
-                                                                    sleep 0.5
-                                                                read -p '         |>>>| ' ARCHIVO_INICIO
-                                                                    sleep 0.2
-                                                                        echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Iniciando servidor...'
-                                                                            echo
-                                                                                if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/$ARCHIVO_INICIO
-                                                            exit; break;;
-                                                    * )
-                                                        sleep 1.5
-                                                            clear
-                                                        echo -e '\e[92m* \e[39m[\e[91mERROR\e[39m] Esta no es una opcion valida!'
-                                                esac
-                                done
-            fi
+                                                        * )
+                                                            sleep 1.5
+                                                                clear
+                                                            echo -e '\e[92m* \e[39m[\e[91mERROR\e[39m] Esta no es una opcion valida!'
+                                                    esac
+                                    done
+                fi
+        """
     elif [ -f '$FILE_TANJIRO' ]; then
         echo -e '\e[92m* \e[39m[\e[94mINFO\e[39m] Acabas de iniciar tu servidor, y has seleccionado \e[4m\e[95mTanjiro\e[39m\e[0m!'
             sleep 3
